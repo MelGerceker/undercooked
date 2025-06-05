@@ -17,6 +17,11 @@ public class StartScreen extends JFrame {
     private boolean playMusicFlag = true; // Set to true initially to play music
     public static int volumeLevel = 100; // Default volume level is 100%
 
+    private JButton soundToggleButton;
+    private ImageIcon volumeOnIcon;
+    private ImageIcon volumeOffIcon;
+    private boolean isMuted = false;
+
     public StartScreen() {
         // Load the background image
         try {
@@ -94,13 +99,6 @@ public class StartScreen extends JFrame {
 
         // now in the image:
 
-        // Add "UnderCook" title at the top
-        // JLabel titleLabel = new JLabel("UnderCook", JLabel.CENTER);
-        // titleLabel.setFont(new Font("Serif", Font.BOLD, 48));
-        // titleLabel.setBounds(130, 50, 500, 60); // Positioned at the top with padding
-        // titleLabel.setForeground(Color.BLACK); // Set color to black
-        // panel.add(titleLabel);
-
         int buttonWidth = 200;
         int buttonHeight = 60;
         int buttonX = 300; // Centered horizontally
@@ -116,24 +114,42 @@ public class StartScreen extends JFrame {
             openGamePanel();
         });
 
-        // Create the "Sound Control" button
-        JButton soundControlButton = createRoundedButton("Sound Control");
-        soundControlButton.setBounds(buttonX, initialY + spacing, buttonWidth, buttonHeight);
-        soundControlButton.addActionListener(e -> openSoundControl());
 
         // Create "Rules" button
         JButton rulesButton = createRoundedButton("Rules");
-        rulesButton.setBounds(buttonX, initialY + spacing * 2, buttonWidth, buttonHeight);
+        rulesButton.setBounds(buttonX, initialY + spacing, buttonWidth, buttonHeight);
         rulesButton.addActionListener(e -> openRulesPage());
 
         // Create the "Exit" button
         JButton exitButton = createRoundedButton("Exit");
-        exitButton.setBounds(buttonX, initialY + spacing * 3, buttonWidth, buttonHeight);
+        exitButton.setBounds(buttonX, initialY + spacing * 2, buttonWidth, buttonHeight);
         exitButton.addActionListener(e -> System.exit(0));
 
-        // Add buttons to the panel
+        // Create Mute Button
+
+        volumeOnIcon = new ImageIcon("cbl asset/volume_up.png");
+        volumeOffIcon = new ImageIcon("cbl asset/volume_off.png");
+
+        soundToggleButton = new JButton(volumeOnIcon);
+        soundToggleButton.setBounds(710, 10, 32, 32); // Top-right corner
+        soundToggleButton.setBorderPainted(false);
+        soundToggleButton.setContentAreaFilled(false);
+        soundToggleButton.setFocusPainted(false);
+        soundToggleButton.setOpaque(false);
+
+        soundToggleButton.addActionListener(e -> {
+            isMuted = !isMuted;
+            soundToggleButton.setIcon(isMuted ? volumeOffIcon : volumeOnIcon);
+            if (isMuted)
+                stopMusic();
+            else
+                playMusic("cbl asset/chill vibes_10.wav");
+        });
+
+        panel.add(soundToggleButton);
+
         panel.add(startButton);
-        panel.add(soundControlButton);
+        //panel.add(soundControlButton);
         panel.add(rulesButton);
         panel.add(exitButton);
 
@@ -227,7 +243,7 @@ public class StartScreen extends JFrame {
         button.setOpaque(false);
         button.setContentAreaFilled(false);
         button.setFocusPainted(false);
-        button.setBorderPainted(false); 
+        button.setBorderPainted(false);
 
         button.setBackground(Color.LIGHT_GRAY);
         button.setForeground(new Color(112, 154, 209));
@@ -235,31 +251,6 @@ public class StartScreen extends JFrame {
         return button;
     }
 
-    // Method to open the sound control within the same panel
-    public void openSoundControl() {
-        panel.removeAll();
-
-        JLabel volumeLabel = new JLabel("Volume Control:");
-        volumeLabel.setFont(new Font("Serif", Font.BOLD, 24));
-        volumeLabel.setBounds(300, 180, 200, 60);
-        panel.add(volumeLabel);
-
-        JSlider volumeSlider = new JSlider(0, 100, volumeLevel); // Slider starts at current volume level
-        volumeSlider.setBounds(300, 250, 200, 50);
-        volumeSlider.addChangeListener(e -> {
-            volumeLevel = volumeSlider.getValue();
-            adjustVolume(volumeLevel); // Adjust both music and set global volume
-        });
-        panel.add(volumeSlider);
-
-        JButton backButton = createRoundedButton("Back");
-        backButton.setBounds(300, 370, 200, 60);
-        backButton.addActionListener(e -> buildInitialScreen());
-        panel.add(backButton);
-
-        panel.revalidate();
-        panel.repaint();
-    }
 
     // Method to open the game screen in a new JFrame
     public void openGamePanel() {
