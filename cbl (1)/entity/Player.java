@@ -32,7 +32,7 @@ public class Player extends Entity {
         this.screenX = gp.screenWidth;
         this.screenY = gp.screenHeight;
 
-        solidArea = new Rectangle(8, 16, 32, 32);
+        solidArea = new Rectangle(8, 16, 32, 32); // Adjust this if collision boundaries are wrong
         fullArea = new Rectangle(worldX, worldY, gp.tileSize, gp.tileSize);
 
         setDefaultValues();
@@ -57,41 +57,62 @@ public class Player extends Entity {
             left1 = ImageIO.read(new File("cbl asset/l1.png"));
         } catch (IOException e) {
             e.printStackTrace();
-
         }
     }
 
     public void update() {
-        // Variables to store independent movement flags for each direction
-        boolean canMoveUp = !gp.cChecker.checkTileCollision(this, "up");
-        boolean canMoveDown = !gp.cChecker.checkTileCollision(this, "down");
-        boolean canMoveLeft = !gp.cChecker.checkTileCollision(this, "left");
-        boolean canMoveRight = !gp.cChecker.checkTileCollision(this, "right");
+        boolean moved = false;
 
-        // Move in each direction independently if the respective key is pressed and no
-        // collision is detected
-        if (keyH.upPressed && canMoveUp) {
+        int originalX = worldX;
+        int originalY = worldY;
+
+        if (keyH.upPressed) {
             direction = "up";
-            worldY -= speed;
-        }
-        if (keyH.downPressed && canMoveDown) {
-            direction = "down";
-            worldY += speed;
-        }
-        if (keyH.leftPressed && canMoveLeft) {
-            direction = "left";
-            worldX -= speed;
-        }
-        if (keyH.rightPressed && canMoveRight) {
-            direction = "right";
-            worldX += speed;
+            worldY = originalY - speed;
+            if (!gp.cChecker.checkTileCollision(this, "up")) {
+                worldY = originalY - speed;
+                moved = true;
+            } else {
+                worldY = originalY; // reset
+            }
         }
 
-        // Update fullArea to follow player's position
+        if (keyH.downPressed) {
+            direction = "down";
+            worldY = originalY + speed;
+            if (!gp.cChecker.checkTileCollision(this, "down")) {
+                worldY = originalY + speed;
+                moved = true;
+            } else {
+                worldY = originalY;
+            }
+        }
+
+        if (keyH.leftPressed) {
+            direction = "left";
+            worldX = originalX - speed;
+            if (!gp.cChecker.checkTileCollision(this, "left")) {
+                worldX = originalX - speed;
+                moved = true;
+            } else {
+                worldX = originalX;
+            }
+        }
+
+        if (keyH.rightPressed) {
+            direction = "right";
+            worldX = originalX + speed;
+            if (!gp.cChecker.checkTileCollision(this, "right")) {
+                worldX = originalX + speed;
+                moved = true;
+            } else {
+                worldX = originalX;
+            }
+        }
+
         fullArea.x = worldX;
         fullArea.y = worldY;
 
-        // Handle pick-up and place actions
         if (keyH.ePressed) {
             if (inventory.hasItem()) {
                 gp.getPickUp().placeItem(this);
@@ -101,9 +122,7 @@ public class Player extends Entity {
             keyH.ePressed = false;
         }
 
-        //
-
-        // Clamp player to within world bounds
+        // Clamp
         if (worldX < 0)
             worldX = 0;
         if (worldY < 0)
@@ -117,12 +136,12 @@ public class Player extends Entity {
         if (worldY > maxWorldY)
             worldY = maxWorldY;
 
+        System.out.println("Moved: " + moved + ", Position: " + worldX + ", " + worldY);
     }
 
     public void draw(Graphics2D g2) {
         BufferedImage image = null;
 
-        // Change the images according to players direction
         switch (direction) {
             case "up":
                 image = up1;
@@ -138,6 +157,7 @@ public class Player extends Entity {
                 break;
         }
 
+        System.out.println("Drawing player facing: " + direction);
         g2.drawImage(image, worldX, worldY, gp.tileSize, gp.tileSize, null);
     }
 
