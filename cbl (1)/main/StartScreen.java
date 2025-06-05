@@ -8,6 +8,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.sound.sampled.*;
 import javax.swing.*;
+import javax.swing.border.TitledBorder;
 
 public class StartScreen extends JFrame {
 
@@ -15,12 +16,14 @@ public class StartScreen extends JFrame {
     private JPanel panel; // Main panel for the start screen
     private BufferedImage backgroundImage; // Background image
     private boolean playMusicFlag = true; // Set to true initially to play music
-    public static int volumeLevel = 100; // Default volume level is 100%
+
+    // change later!!!
+    public static int volumeLevel = 0; // Default volume level is 100%
 
     private JButton soundToggleButton;
     private ImageIcon volumeOnIcon;
     private ImageIcon volumeOffIcon;
-    private boolean isMuted = false;
+    private boolean isMuted = true;
 
     public StartScreen() {
         // Load the background image
@@ -106,14 +109,13 @@ public class StartScreen extends JFrame {
         int spacing = 80; // Spacing between buttons
 
         // Create the "Start" button
-        JButton startButton = createRoundedButton("Start");
+        JButton startButton = createRoundedButton("< Start >");
         startButton.setBounds(buttonX, initialY, buttonWidth, buttonHeight);
         startButton.addActionListener(e -> {
             playMusicFlag = false;
             stopMusic();
             openGamePanel();
         });
-
 
         // Create "Rules" button
         JButton rulesButton = createRoundedButton("Rules");
@@ -149,7 +151,7 @@ public class StartScreen extends JFrame {
         panel.add(soundToggleButton);
 
         panel.add(startButton);
-        //panel.add(soundControlButton);
+        // panel.add(soundControlButton);
         panel.add(rulesButton);
         panel.add(exitButton);
 
@@ -161,33 +163,63 @@ public class StartScreen extends JFrame {
     public void openRulesPage() {
         panel.removeAll();
 
-        // Create and add a label with Lorem Ipsum text
-        JTextArea rulesText = new JTextArea("Rules:\n" + //
-                "\n" + //
-                "Press WASD to move your character. Press e to pick up and place an item\n" + //
-                "\n" + //
-                "The kitchen has two different kinds of stations." + //
-                "\n" + //
-                "The stations with squares on their centeirs allows you to combine different items.However, to do so you must follow the rules of cooking itself. To make a proper doner wrap, you must create the base first which consists the doner meat and wrap. Then you can add the tomatoes and/or the lettuce.\n"
-                + //
-                "\n" + //
-                "The tomatoes and lettuce must be cut on the cutting stations before using them on the combining stations."
-                + "\n" + //
-                "The waiter uses these abbreviations for the recipes:" + //
-                "donerw: doner and wrap, donerl: donerwrap and lettuce, donert: donerwrap and lettuce," + "\\n" + //
-                "donerlt: donerwrap lettuce and tomato"
+        // Create a custom panel for background
 
-        );
-        rulesText.setBounds(100, 100, 568, 300);
+        JPanel rulesBackground = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                Graphics2D g2 = (Graphics2D) g;
+
+                // smooth edges:
+                g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+                // Background color 112, 154, 209
+                g2.setColor(new Color(112, 154, 209));
+
+                g2.fillRect(0, 0, getWidth(), getHeight());
+            }
+        };
+
+        rulesBackground.setLayout(null); // Manual positioning inside this background
+        rulesBackground.setBounds(80, 20, 608, 400);
+        rulesBackground.setOpaque(false); // So paintComponent is visible
+
+        // Actual Rules Text
+        JTextArea rulesText = new JTextArea(
+                "Press WASD to move your character. Press e to pick up and place an item.\n\n" +
+                        "The kitchen has two different kinds of stations.\n" +
+                        "The stations with squares on their centers allow you to combine different items." +
+                        "However, don't forget to follow the rules of cooking: create the base first with doner meat and wrap.\n\n"
+                        +
+                        "Then, to add tomatoes and/or lettuce, you need to cut beforehand." +
+                        "Use the second station with the knife and cutting board for this.\n\n" +
+                        "Oh and you need to remember that the waiter uses some abbreviations when taking orders!\n\n" +
+
+                        "Abbreviations:\n" +
+                        "donerw: doner + wrap\n" +
+                        "donerl: doner + wrap + lettuce\n" +
+                        "donert: doner + wrap + tomato\n" +
+                        "donerlt: doner + wrap + lettuce + tomato");
+
+        rulesText.setBounds(60, 25, 468, 370);
         rulesText.setFont(new Font("Serif", Font.PLAIN, 14));
-        rulesText.setEditable(false); // Make it read-only
+        rulesText.setEditable(false);
         rulesText.setWrapStyleWord(true);
         rulesText.setLineWrap(true);
-        panel.add(rulesText);
+        rulesText.setOpaque(false); // Let background panel show through
+
+        TitledBorder titledBorder = new TitledBorder(BorderFactory.createLineBorder(new Color(88, 123, 168), 5),
+                "RULES:");
+        rulesText.setBorder(titledBorder);
+
+        rulesBackground.add(rulesText);
+
+        panel.add(rulesBackground);
 
         // Create and add a "Back" button to return to StartScreen
         JButton backButton = createRoundedButton("Back");
-        backButton.setBounds(300, 440, 200, 60);
+        backButton.setBounds(275, 424, 200, 60);
         backButton.addActionListener(e -> buildInitialScreen());
         panel.add(backButton);
 
@@ -238,7 +270,7 @@ public class StartScreen extends JFrame {
         };
 
         // styling of button
-        // light blue: 112 154 209
+        // light blue: 112, 154, 209
         // shadow blue: 88 123 168
         button.setOpaque(false);
         button.setContentAreaFilled(false);
@@ -250,7 +282,6 @@ public class StartScreen extends JFrame {
 
         return button;
     }
-
 
     // Method to open the game screen in a new JFrame
     public void openGamePanel() {
