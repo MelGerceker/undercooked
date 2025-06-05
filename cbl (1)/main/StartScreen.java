@@ -21,14 +21,14 @@ public class StartScreen extends JFrame {
         // Load the background image
         try {
             backgroundImage = ImageIO
-                    .read(new File("cbl asset/A_highly_blurry_pixel_art_representation_of_a_cook.jpg"));
+                    .read(new File("cbl asset/undercooked_start_screen.png"));
         } catch (IOException e) {
             System.out.println("Background image could not be loaded.");
             e.printStackTrace();
         }
 
         // Set the window title, size, and non-resizable property
-        setTitle("Game Menu");
+        setTitle("Undercooked");
         setSize(768, 576);
         setResizable(false); // Make the window non-resizable
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -55,7 +55,7 @@ public class StartScreen extends JFrame {
 
         // Play background music if the flag is set to true
         if (playMusicFlag) {
-            playMusic(GamePanel.URL + "chill vibes_10.wav");
+            playMusic("cbl asset/chill vibes_10.wav");
         }
     }
 
@@ -91,12 +91,14 @@ public class StartScreen extends JFrame {
     public void buildInitialScreen() {
         panel.removeAll();
 
+        //now in the image:
+        
         // Add "UnderCook" title at the top
-        JLabel titleLabel = new JLabel("UnderCook", JLabel.CENTER);
-        titleLabel.setFont(new Font("Serif", Font.BOLD, 48));
-        titleLabel.setBounds(130, 50, 500, 60); // Positioned at the top with padding
-        titleLabel.setForeground(Color.BLACK); // Set color to black
-        panel.add(titleLabel);
+        //JLabel titleLabel = new JLabel("UnderCook", JLabel.CENTER);
+        //titleLabel.setFont(new Font("Serif", Font.BOLD, 48));
+        //titleLabel.setBounds(130, 50, 500, 60); // Positioned at the top with padding
+        //titleLabel.setForeground(Color.BLACK); // Set color to black
+        //panel.add(titleLabel);
 
         int buttonWidth = 200;
         int buttonHeight = 60;
