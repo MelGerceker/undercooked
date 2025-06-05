@@ -33,6 +33,7 @@ public class StartScreen extends JFrame {
         setResizable(false); // Make the window non-resizable
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
+        setLocationRelativeTo(null);
 
         // Create a custom panel for background
         panel = new JPanel() {
@@ -91,14 +92,14 @@ public class StartScreen extends JFrame {
     public void buildInitialScreen() {
         panel.removeAll();
 
-        //now in the image:
-        
+        // now in the image:
+
         // Add "UnderCook" title at the top
-        //JLabel titleLabel = new JLabel("UnderCook", JLabel.CENTER);
-        //titleLabel.setFont(new Font("Serif", Font.BOLD, 48));
-        //titleLabel.setBounds(130, 50, 500, 60); // Positioned at the top with padding
-        //titleLabel.setForeground(Color.BLACK); // Set color to black
-        //panel.add(titleLabel);
+        // JLabel titleLabel = new JLabel("UnderCook", JLabel.CENTER);
+        // titleLabel.setFont(new Font("Serif", Font.BOLD, 48));
+        // titleLabel.setBounds(130, 50, 500, 60); // Positioned at the top with padding
+        // titleLabel.setForeground(Color.BLACK); // Set color to black
+        // panel.add(titleLabel);
 
         int buttonWidth = 200;
         int buttonHeight = 60;
@@ -181,14 +182,24 @@ public class StartScreen extends JFrame {
     // Method to create a rounded button
     private JButton createRoundedButton(String text) {
         JButton button = new JButton(text) {
+            // private boolean hovered = false;
+
             @Override
             protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
+                // super.paintComponent(g);
                 Graphics2D g2 = (Graphics2D) g.create();
                 g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-                g2.setColor(getBackground());
+
+                // Change background only on hover
+                if (getModel().isRollover()) {
+                    g2.setColor(new Color(200, 220, 255)); // on hover
+                } else {
+                    g2.setColor(Color.WHITE); // normal background
+                }
+
                 g2.fill(new RoundRectangle2D.Float(0, 0, getWidth(), getHeight(), 30, 30));
 
+                // Text
                 FontMetrics fm = g2.getFontMetrics();
                 int stringWidth = fm.stringWidth(getText());
                 int stringHeight = fm.getAscent();
@@ -201,16 +212,26 @@ public class StartScreen extends JFrame {
             protected void paintBorder(Graphics g) {
                 Graphics2D g2 = (Graphics2D) g.create();
                 g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-                g2.setColor(getForeground());
+
+                g2.setColor(new Color(88, 123, 168));
+                g2.setStroke(new BasicStroke(5));
+
                 g2.draw(new RoundRectangle2D.Float(0, 0, getWidth(), getHeight(), 30, 30));
                 g2.dispose();
             }
         };
+
+        // styling of button
+        // light blue: 112 154 209
+        // shadow blue: 88 123 168
         button.setOpaque(false);
         button.setContentAreaFilled(false);
         button.setFocusPainted(false);
+        button.setBorderPainted(false); 
+
         button.setBackground(Color.LIGHT_GRAY);
-        button.setForeground(Color.BLACK);
+        button.setForeground(new Color(112, 154, 209));
+
         return button;
     }
 
