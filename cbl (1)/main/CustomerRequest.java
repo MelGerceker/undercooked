@@ -3,13 +3,12 @@ package main;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import object.SuperObject;
-import object.OBJ_Tomato;
+import object.OBJ_Cola;
 import object.OBJ_donerl;
 import object.OBJ_donerlt;
 import object.OBJ_donert;
 import object.OBJ_donerw;
-import object.OBJ_Cola;
+import object.SuperObject;
 
 public class CustomerRequest {
 
@@ -45,6 +44,19 @@ public class CustomerRequest {
 
     // Get the current request as a string
     public String getCurrentRequest() {
-        return currentRequest != null ? currentRequest.getClass().getSimpleName() : "No request";
+
+        if (currentRequest != null) {
+            String name = currentRequest.getClass().getSimpleName();
+            String[] objectName = name.split("_");
+
+            return objectName[1];
+
+            //return currentRequest.getClass().getSimpleName();
+        } else {
+            return "No request";
+        }
+
+        // return currentRequest != null ? currentRequest.getClass().getSimpleName() :
+        // "No request";
     }
 }

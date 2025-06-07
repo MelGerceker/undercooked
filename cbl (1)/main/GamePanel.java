@@ -369,14 +369,17 @@ public class GamePanel extends JPanel implements Runnable {
         inventory.draw(g2, this);
 
         g2.setColor(Color.WHITE);
-        g2.setFont(new Font("Arial", Font.BOLD, 20));
-        g2.drawString("Level: " + level, 10, 30);
+        g2.setFont(new Font("Arial", Font.BOLD, 16));
 
-        g2.drawString("Time: " + ddMinute + ":" + ddSecond, 10, 60);
+        // 30 58 82: old y-axis for each string
+
+        g2.drawString("Level: " + level, 10, 82);
+
+        g2.drawString("Time: " + ddMinute + ":" + ddSecond, 10, 56);
 
         if (customerRequest != null) {
-            g2.setFont(new Font("Arial", Font.PLAIN, 16));
-            g2.drawString("Customer Request: " + customerRequest.getCurrentRequest(), 10, 90);
+            g2.setFont(new Font("Arial", Font.BOLD, 17));
+            g2.drawString("Customer Request: " + customerRequest.getCurrentRequest(), 10, 30);
         }
 
         if (displayCustomerLossMessage) {

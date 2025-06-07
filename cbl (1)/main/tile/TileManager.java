@@ -78,6 +78,10 @@ public class TileManager {
          tile[9].image = ImageIO.read(new File("cbl asset/cutting.png"));
          tile[9].collision = true;
 
+         tile[10] = new Tile();
+         tile[10].image = ImageIO.read(new File("cbl asset/tile02.png"));
+         tile[10].collision = true;
+
       } catch (IOException e) {
          e.printStackTrace();
       }
