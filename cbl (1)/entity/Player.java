@@ -136,7 +136,7 @@ public class Player extends Entity {
         if (worldY > maxWorldY)
             worldY = maxWorldY;
 
-        System.out.println("Moved: " + moved + ", Position: " + worldX + ", " + worldY);
+        //System.out.println("Moved: " + moved + ", Position: " + worldX + ", " + worldY);
     }
 
     public void draw(Graphics2D g2) {
@@ -157,7 +157,7 @@ public class Player extends Entity {
                 break;
         }
 
-        System.out.println("Drawing player facing: " + direction);
+        //System.out.println("Drawing player facing: " + direction);
         g2.drawImage(image, worldX, worldY, gp.tileSize, gp.tileSize, null);
     }
 

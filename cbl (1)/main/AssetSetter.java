@@ -1,12 +1,5 @@
 package main;
 
-import object.OBJ_Cola;
-import object.OBJ_Doner;
-import object.OBJ_Key;
-import object.OBJ_Lettuce;
-import object.OBJ_Tomato;
-import object.OBJ_Wrap;
-
 public class AssetSetter {
     GamePanel gp;
 
@@ -25,6 +18,20 @@ public class AssetSetter {
 
         // This class would be used for displaying objects in the map but currently all
         // stations and parts of the kitchen map are tiles.
+
+        // Example: find delivery tile and set coords
+        for (int row = 0; row < gp.maxWorldRow; row++) {
+            for (int col = 0; col < gp.maxWorldCol; col++) {
+                int tileNum = gp.tileM.mapTileNum[col][row];
+                if (tileNum == 6) { // 6 represents the delivery tile
+                    gp.deliveryX = col * gp.tileSize;
+                    gp.deliveryY = row * gp.tileSize;
+                }
+            }
+        }
+
+        System.out.println("Delivery tile set at: " + gp.deliveryX + ", " + gp.deliveryY);
+
 
     }
 }

@@ -36,8 +36,8 @@ public class GamePanel extends JPanel implements Runnable {
 
     int FPS = 60;
 
-    //The screen and world coordinates are the same since the map only
-    //exists of what is visible on the screen.
+    // The screen and world coordinates are the same since the map only
+    // exists of what is visible on the screen.
     public final int maxWorldCol = maxScreenCol;
     public final int maxWorldRow = maxScreenRow;
     public final int worldWidth = screenWidth;
@@ -49,14 +49,14 @@ public class GamePanel extends JPanel implements Runnable {
     boolean levelComplete = false;
     boolean gameOver = false;
     private long levelCompleteTime = 0;
-    private static final int LEVEL_COMPLETE_DELAY = 2000; 
+    private static final int LEVEL_COMPLETE_DELAY = 2000;
     // 2-second delay to display Level Complete
     private static final int GAME_OVER_DISPLAY_TIME = 3000;
     // 3-second delay to display "You Win"
     private long gameOverDisplayStartTime = 0;
-    //The delays also help the game play to match with the sound effects.
+    // The delays also help the game play to match with the sound effects.
 
-    //Number of customers to serve for each level
+    // Number of customers to serve for each level
     final int LEVEL_1_CUSTOMERS = 1;
     final int LEVEL_2_CUSTOMERS = 1;
     final int LEVEL_3_CUSTOMERS = 1;
@@ -74,6 +74,10 @@ public class GamePanel extends JPanel implements Runnable {
     public final int pauseState = 2;
     public final int levelCompleteState = 3;
     public final int gameOverState = 4;
+
+    //
+    public int deliveryX;
+    public int deliveryY;
 
     private Inventory inventory;
     private PickUp pickUp;
@@ -172,7 +176,7 @@ public class GamePanel extends JPanel implements Runnable {
                 second = 0;
                 break;
             case 2:
-                //The speed increases in level 2.
+                // The speed increases in level 2.
                 player.setSpeed(6);
                 customersServed = 0;
                 totalRequests = 0;
@@ -227,9 +231,10 @@ public class GamePanel extends JPanel implements Runnable {
         if (gameState == playState && !gameOver) {
             player.update();
 
-            final int TARGET_X = 144;
-            final int TARGET_Y = 40;
-            final int DEFLECTION = 20;
+            // final int TARGET_X = 144;
+            // final int TARGET_Y = 40;
+
+            final int DEFLECTION = 40;
 
             pickUp.replaceItemsWithDonerWOnTile8();
             pickUp.cuttingTomato();
@@ -242,8 +247,11 @@ public class GamePanel extends JPanel implements Runnable {
                     int objectX = currentObject.worldX;
                     int objectY = currentObject.worldY;
 
-                    boolean isCloseX = objectX >= TARGET_X - DEFLECTION && objectX <= TARGET_X + DEFLECTION;
-                    boolean isCloseY = objectY >= TARGET_Y - DEFLECTION && objectY <= TARGET_Y + DEFLECTION;
+                    boolean isCloseX = objectX >= deliveryX - DEFLECTION && objectX <= deliveryX + DEFLECTION;
+                    boolean isCloseY = objectY >= deliveryY - DEFLECTION && objectY <= deliveryY + DEFLECTION;
+
+                    System.out.println("Object dropped at: " + objectX + ", " + objectY);
+
 
                     if (isCloseX && isCloseY && customerRequest.checkRequest(currentObject)) {
                         obj[i] = null;
@@ -273,7 +281,8 @@ public class GamePanel extends JPanel implements Runnable {
             }
         }
 
-        if (gameState == gameOverState && System.currentTimeMillis() - gameOverDisplayStartTime >= GAME_OVER_DISPLAY_TIME) {
+        if (gameState == gameOverState
+                && System.currentTimeMillis() - gameOverDisplayStartTime >= GAME_OVER_DISPLAY_TIME) {
             closeGameWindow();
             stopGameThread();
         }
@@ -290,23 +299,22 @@ public class GamePanel extends JPanel implements Runnable {
             levelComplete = true;
             gameState = levelCompleteState;
             levelCompleteTime = System.currentTimeMillis();
-            playSoundEffect(GamePanel.URL+"level-passed-143039.wav\\", false);
+            playSoundEffect(GamePanel.URL + "level-passed-143039.wav\\", false);
         }
     }
 
     private int getRequiredCustomersForLevel(int level) {
-    switch (level) {
-        case 1:
-            return LEVEL_1_CUSTOMERS;
-        case 2:
-            return LEVEL_2_CUSTOMERS;
-        case 3:
-            return LEVEL_3_CUSTOMERS;
-        default:
-            return 0;
+        switch (level) {
+            case 1:
+                return LEVEL_1_CUSTOMERS;
+            case 2:
+                return LEVEL_2_CUSTOMERS;
+            case 3:
+                return LEVEL_3_CUSTOMERS;
+            default:
+                return 0;
+        }
     }
-}
-
 
     private void playSoundEffect(String filePath, boolean isGameOver) {
         try {
@@ -405,7 +413,3 @@ public class GamePanel extends JPanel implements Runnable {
         return inventory;
     }
 }
-
-
-
-               
