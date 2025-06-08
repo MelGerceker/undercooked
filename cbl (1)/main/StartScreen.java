@@ -18,7 +18,7 @@ public class StartScreen extends JFrame {
     private boolean playMusicFlag = true; // Set to true initially to play music
 
     // change later!!!
-    public static int volumeLevel = 100; // Default volume level is 100%
+    public static int volumeLevel = 0; // Default volume level is 100%
 
     private JButton soundToggleButton;
     private ImageIcon volumeOnIcon;
@@ -103,13 +103,13 @@ public class StartScreen extends JFrame {
         // now in the image:
 
         int buttonWidth = 200;
-        int buttonHeight = 60;
-        int buttonX = 300; // Centered horizontally
-        int initialY = 180; // Starting Y position for the buttons
+        int buttonHeight = 50;
+        int buttonX = 360;
+        int initialY = 190; // Starting Y position for the buttons
         int spacing = 80; // Spacing between buttons
 
         // Create the "Start" button
-        JButton startButton = createRoundedButton("< Start >");
+        JButton startButton = createRoundedButton("<  Start  >");
         startButton.setBounds(buttonX, initialY, buttonWidth, buttonHeight);
         startButton.addActionListener(e -> {
             playMusicFlag = false;
@@ -118,12 +118,12 @@ public class StartScreen extends JFrame {
         });
 
         // Create "Rules" button
-        JButton rulesButton = createRoundedButton("Rules");
+        JButton rulesButton = createRoundedButton("<  Rules  >");
         rulesButton.setBounds(buttonX, initialY + spacing, buttonWidth, buttonHeight);
         rulesButton.addActionListener(e -> openRulesPage());
 
         // Create the "Exit" button
-        JButton exitButton = createRoundedButton("Exit");
+        JButton exitButton = createRoundedButton("<  Exit  >");
         exitButton.setBounds(buttonX, initialY + spacing * 2, buttonWidth, buttonHeight);
         exitButton.addActionListener(e -> System.exit(0));
 
@@ -219,7 +219,7 @@ public class StartScreen extends JFrame {
 
         // Create and add a "Back" button to return to StartScreen
         JButton backButton = createRoundedButton("Back");
-        backButton.setBounds(275, 424, 200, 60);
+        backButton.setBounds(275, 424, 200, 50);
         backButton.addActionListener(e -> buildInitialScreen());
         panel.add(backButton);
 
@@ -252,7 +252,7 @@ public class StartScreen extends JFrame {
                 int stringWidth = fm.stringWidth(getText());
                 int stringHeight = fm.getAscent();
                 g2.setColor(getForeground());
-                g2.drawString(getText(), (getWidth() - stringWidth) / 2, (getHeight() + stringHeight) / 2 - 5);
+                g2.drawString(getText(), (getWidth() - stringWidth) / 2, (getHeight() + stringHeight) / 2 - 1);
                 g2.dispose();
             }
 
