@@ -11,7 +11,7 @@ public class OBJ_Lettuce extends SuperObject {
 
         try {
             // image = ImageIO.read
-            image = ImageIO.read(new File("cbl asset/marul.png"));
+            image = ImageIO.read(new File("assets/lettuce.png"));
 
         } catch (IOException e) {
             e.printStackTrace();

@@ -18,7 +18,7 @@ public class StartScreen extends JFrame {
     private boolean playMusicFlag = true; // Set to true initially to play music
 
     // change later!!!
-    public static int volumeLevel = 0; // Default volume level is 100%
+    public static int volumeLevel = 100; // Default volume level is 100%
 
     private JButton soundToggleButton;
     private ImageIcon volumeOnIcon;
@@ -29,7 +29,7 @@ public class StartScreen extends JFrame {
         // Load the background image
         try {
             backgroundImage = ImageIO
-                    .read(new File("cbl asset/undercooked_start_screen.png"));
+                    .read(new File("assets/undercooked_start_screen.png"));
         } catch (IOException e) {
             System.out.println("Background image could not be loaded.");
             e.printStackTrace();
@@ -64,7 +64,7 @@ public class StartScreen extends JFrame {
 
         // Play background music if the flag is set to true
         if (playMusicFlag) {
-            playMusic("cbl asset/chill vibes_10.wav");
+            playMusic("assets/start_screen_sound.wav");
         }
     }
 
@@ -129,8 +129,8 @@ public class StartScreen extends JFrame {
 
         // Create Mute Button
 
-        volumeOnIcon = new ImageIcon("cbl asset/volume_up.png");
-        volumeOffIcon = new ImageIcon("cbl asset/volume_off.png");
+        volumeOnIcon = new ImageIcon("assets/volume_up.png");
+        volumeOffIcon = new ImageIcon("assets/volume_off.png");
 
         soundToggleButton = new JButton(volumeOnIcon);
         soundToggleButton.setBounds(710, 10, 32, 32); // Top-right corner
@@ -145,7 +145,7 @@ public class StartScreen extends JFrame {
             if (isMuted)
                 stopMusic();
             else
-                playMusic("cbl asset/chill vibes_10.wav");
+                playMusic("assets/start_screen_sound.wav");
         });
 
         panel.add(soundToggleButton);

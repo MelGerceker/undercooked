@@ -51,10 +51,10 @@ public class Player extends Entity {
 
     public void getPlayerImage() {
         try {
-            up1 = ImageIO.read(new File("cbl asset/chefu1.png"));
-            right1 = ImageIO.read(new File("cbl asset/r1.png"));
-            down1 = ImageIO.read(new File("cbl asset/chefu1.png"));
-            left1 = ImageIO.read(new File("cbl asset/l1.png"));
+            up1 = ImageIO.read(new File("assets/chefUp1.png"));
+            right1 = ImageIO.read(new File("assets/chefRight1.png"));
+            down1 = ImageIO.read(new File("assets/chefUp1.png"));
+            left1 = ImageIO.read(new File("assets/chefLeft1.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

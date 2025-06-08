@@ -11,7 +11,7 @@ public class OBJ_Tomato extends SuperObject {
 
         try {
             // image = ImageIO.read
-            image = ImageIO.read(new File("cbl asset/tomato.png"));
+            image = ImageIO.read(new File("assets/tomato.png"));
 
         } catch (IOException e) {
             e.printStackTrace();

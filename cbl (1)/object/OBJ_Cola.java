@@ -11,7 +11,7 @@ public class OBJ_Cola extends SuperObject {
 
         try {
             // image = ImageIO.read
-            image = ImageIO.read(new File("cbl asset/kola.png"));
+            image = ImageIO.read(new File("assets/cola.png"));
 
         } catch (IOException e) {
             e.printStackTrace();

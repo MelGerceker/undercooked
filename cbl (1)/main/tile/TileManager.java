@@ -40,46 +40,46 @@ public class TileManager {
    public void getTileImage() {
       try {
          tile[0] = new Tile();
-         tile[0].image = ImageIO.read(new File("cbl asset/floor1.png"));
+         tile[0].image = ImageIO.read(new File("assets/floor1.png"));
 
          tile[1] = new Tile();
-         tile[1].image = ImageIO.read(new File("cbl asset/table.png"));
+         tile[1].image = ImageIO.read(new File("assets/table.png"));
          tile[1].collision = true;
 
          tile[2] = new Tile();
-         tile[2].image = ImageIO.read(new File("cbl asset/tomato.png"));
+         tile[2].image = ImageIO.read(new File("assets/tomato.png"));
          tile[2].collision = true;
 
          tile[3] = new Tile();
-         tile[3].image = ImageIO.read(new File("cbl asset/marul.png"));
+         tile[3].image = ImageIO.read(new File("assets/lettuce.png"));
          tile[3].collision = true;
 
          tile[4] = new Tile();
-         tile[4].image = ImageIO.read(new File("cbl asset/doner.png"));
+         tile[4].image = ImageIO.read(new File("assets/doner.png"));
          tile[4].collision = true;
 
          tile[5] = new Tile();
-         tile[5].image = ImageIO.read(new File("cbl asset/lavas.png"));
+         tile[5].image = ImageIO.read(new File("assets/wrap.png"));
          tile[5].collision = true;
 
          tile[7] = new Tile();
-         tile[7].image = ImageIO.read(new File("cbl asset/kola.png"));
+         tile[7].image = ImageIO.read(new File("assets/cola.png"));
          tile[7].collision = true;
 
          tile[6] = new Tile();
-         tile[6].image = ImageIO.read(new File("cbl asset/delivery.png"));
+         tile[6].image = ImageIO.read(new File("assets/delivery.png"));
          tile[6].collision = true;
 
          tile[8] = new Tile();
-         tile[8].image = ImageIO.read(new File("cbl asset/station.png"));
+         tile[8].image = ImageIO.read(new File("assets/station.png"));
          tile[8].collision = true;
 
          tile[9] = new Tile();
-         tile[9].image = ImageIO.read(new File("cbl asset/cutting.png"));
+         tile[9].image = ImageIO.read(new File("assets/cutting.png"));
          tile[9].collision = true;
 
          tile[10] = new Tile();
-         tile[10].image = ImageIO.read(new File("cbl asset/tile02.png"));
+         tile[10].image = ImageIO.read(new File("assets/tile02.png"));
          tile[10].collision = true;
 
       } catch (IOException e) {
@@ -89,7 +89,7 @@ public class TileManager {
 
    public void loadMap() {
       try {
-         InputStream is = new FileInputStream(new File("cbl asset/cblmap.txt"));
+         InputStream is = new FileInputStream(new File("assets/map.txt"));
          BufferedReader br = new BufferedReader(new InputStreamReader(is));
          int col = 0;
          int row = 0;

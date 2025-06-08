@@ -22,10 +22,6 @@ import object.SuperObject;
 
 public class GamePanel extends JPanel implements Runnable {
 
-    public static final String URL = "\\Users\\20242623\\OneDrive - TU Eindhoven\\Desktop\\personal\\all cbl\\cbl asset\\";
-
-    // CHANGE THIS CODE ACCORDING TO YOUR PATH
-
     final int originalTileSize = 16;
     final int scale = 3;
     public final int tileSize = originalTileSize * scale;
@@ -277,7 +273,7 @@ public class GamePanel extends JPanel implements Runnable {
             } else {
                 gameState = gameOverState;
                 gameOverDisplayStartTime = System.currentTimeMillis();
-                playWinSound("cbl asset/brass-fanfare-with-timpani-and-winchimes-reverberated-146260-_mp3cut.net_.wav");
+                playWinSound("assets/win_sound.wav");
             }
         }
 
@@ -299,7 +295,7 @@ public class GamePanel extends JPanel implements Runnable {
             levelComplete = true;
             gameState = levelCompleteState;
             levelCompleteTime = System.currentTimeMillis();
-            playSoundEffect(GamePanel.URL + "level-passed-143039.wav\\", false);
+            playSoundEffect( "assets/level_passed.wav\\", false);
         }
     }
 
