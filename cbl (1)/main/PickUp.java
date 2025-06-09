@@ -3,18 +3,16 @@ package main;
 import entity.Player;
 import object.OBJ_Cola;
 import object.OBJ_Doner;
-import object.OBJ_Key;
 import object.OBJ_Lettuce;
 import object.OBJ_Tomato;
 import object.OBJ_Wrap;
+import object.OBJ_cutLettuce;
 import object.OBJ_cutTomato;
 import object.OBJ_donerl;
 import object.OBJ_donerlt;
 import object.OBJ_donert;
 import object.OBJ_donerw;
-import object.OBJ_cutLettuce;
 import object.SuperObject;
-import main.Inventory;
 
 public class PickUp {
 
@@ -32,9 +30,12 @@ public class PickUp {
         int playerTileX = player.worldX / gp.tileSize;
         int playerTileY = player.worldY / gp.tileSize;
 
+        //System.out.print("playerx:" + playerTileX + "playery:" + playerTileY);
+
         // Loop over nearby tiles within the defined range
         for (int x = playerTileX - range; x <= playerTileX + range; x++) {
-            for (int y = playerTileY - range; y <= playerTileY + range; y++) {
+            for (int y = playerTileY - range; y <= playerTileY + 2*range; y++) {
+                // in the second for loop, the y range is increased to allow pickup from the bottom row tiles
                 if (x >= 0 && y >= 0 && x < gp.maxWorldCol && y < gp.maxWorldRow) {
                     if (gp.tileM.mapTileNum[x][y] == 2) {
                         gp.getInventory().addItem(new OBJ_Tomato());
@@ -150,7 +151,6 @@ public class PickUp {
                         item.setPosition(targetX, targetY);
                         return;
                     }
-
                 }
             }
         }

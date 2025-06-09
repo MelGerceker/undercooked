@@ -246,7 +246,7 @@ public class GamePanel extends JPanel implements Runnable {
                     boolean isCloseX = objectX >= deliveryX - DEFLECTION && objectX <= deliveryX + DEFLECTION;
                     boolean isCloseY = objectY >= deliveryY - DEFLECTION && objectY <= deliveryY + DEFLECTION;
 
-                    System.out.println("Object dropped at: " + objectX + ", " + objectY);
+                    //System.out.println("Object dropped at: " + objectX + ", " + objectY);
 
 
                     if (isCloseX && isCloseY && customerRequest.checkRequest(currentObject)) {

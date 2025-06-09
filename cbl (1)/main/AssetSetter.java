@@ -30,8 +30,7 @@ public class AssetSetter {
             }
         }
 
-        System.out.println("Delivery tile set at: " + gp.deliveryX + ", " + gp.deliveryY);
-
+        //System.out.println("Delivery tile set at: " + gp.deliveryX + ", " + gp.deliveryY);
 
     }
 }

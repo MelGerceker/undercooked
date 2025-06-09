@@ -18,7 +18,7 @@ public class StartScreen extends JFrame {
     private boolean playMusicFlag = true; // Set to true initially to play music
 
     // change later!!!
-    public static int volumeLevel = 0; // Default volume level is 100%
+    public static int volumeLevel = 100; // Default volume level is 100%
 
     private JButton soundToggleButton;
     private ImageIcon volumeOnIcon;
