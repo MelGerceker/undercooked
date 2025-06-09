@@ -19,7 +19,7 @@ public class AssetSetter {
         // This class would be used for displaying objects in the map but currently all
         // stations and parts of the kitchen map are tiles.
 
-        // Example: find delivery tile and set coords
+        // Find delivery tile and set coords
         for (int row = 0; row < gp.maxWorldRow; row++) {
             for (int col = 0; col < gp.maxWorldCol; col++) {
                 int tileNum = gp.tileM.mapTileNum[col][row];

@@ -7,7 +7,7 @@ import javax.imageio.ImageIO;
 public class OBJ_donerw extends SuperObject{
 
     public OBJ_donerw() {
-        name = "donerw";
+        name = "DonerW";
 
         try{
             //image = ImageIO.read

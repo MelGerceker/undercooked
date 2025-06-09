@@ -46,17 +46,14 @@ public class CustomerRequest {
     public String getCurrentRequest() {
 
         if (currentRequest != null) {
-            String name = currentRequest.getClass().getSimpleName();
-            String[] objectName = name.split("_");
+            //String name = currentRequest.getClass().getSimpleName();
+            //String[] objectName = name.split("_");
+            //return objectName[1];
+            return currentRequest.name;
 
-            return objectName[1];
-
-            //return currentRequest.getClass().getSimpleName();
         } else {
             return "No request";
         }
 
-        // return currentRequest != null ? currentRequest.getClass().getSimpleName() :
-        // "No request";
     }
 }
