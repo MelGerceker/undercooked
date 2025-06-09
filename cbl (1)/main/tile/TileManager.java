@@ -30,7 +30,7 @@ public class TileManager {
       this.maxWorldCol = gp.maxWorldCol;
       this.maxWorldRow = gp.maxWorldRow;
 
-      tile = new Tile[15];
+      tile = new Tile[20];
       mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow];
 
       getTileImage();
@@ -82,6 +82,38 @@ public class TileManager {
          tile[10].image = ImageIO.read(new File("assets/tile02.png"));
          tile[10].collision = true;
 
+         tile[11] = new Tile();
+         tile[11].image = ImageIO.read(new File("assets/table000.png"));
+         tile[11].collision = true;
+
+         tile[12] = new Tile();
+         tile[12].image = ImageIO.read(new File("assets/table001.png"));
+         tile[12].collision = true;
+
+         tile[13] = new Tile();
+         tile[13].image = ImageIO.read(new File("assets/table002.png"));
+         tile[13].collision = true;
+
+         tile[14] = new Tile();
+         tile[14].image = ImageIO.read(new File("assets/table003.png"));
+         tile[14].collision = true;
+
+         tile[15] = new Tile();
+         tile[15].image = ImageIO.read(new File("assets/table004.png"));
+         tile[15].collision = true;
+
+         tile[16] = new Tile();
+         tile[16].image = ImageIO.read(new File("assets/table005.png"));
+         tile[16].collision = true;
+
+         tile[17] = new Tile();
+         tile[17].image = ImageIO.read(new File("assets/table006.png"));
+         tile[17].collision = true;
+
+         tile[18] = new Tile();
+         tile[18].image = ImageIO.read(new File("assets/table007.png"));
+         tile[18].collision = true;
+
       } catch (IOException e) {
          e.printStackTrace();
       }
@@ -126,8 +158,8 @@ public class TileManager {
 
          if (tileNum >= 0 && tileNum < tile.length && tile[tileNum] != null && tile[tileNum].image != null) {
             g2.drawImage(tile[tileNum].image, x, y, gp.tileSize, gp.tileSize, null);
-        }
-         //g2.drawImage(tile[tileNum].image, x, y, gp.tileSize, gp.tileSize, null);
+         }
+         // g2.drawImage(tile[tileNum].image, x, y, gp.tileSize, gp.tileSize, null);
          col++;
          x += gp.tileSize;
 

@@ -154,7 +154,7 @@ public class StartScreen extends JFrame {
                 playMusic("assets/start_screen_sound.wav");
             }
         });
-
+        
         panel.add(soundToggleButton);
 
         panel.add(startButton);
