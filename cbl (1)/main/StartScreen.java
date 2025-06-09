@@ -71,6 +71,11 @@ public class StartScreen extends JFrame {
     // Method to play background music with error handling
     public void playMusic(String musicPath) {
         try {
+            if (musicClip != null && musicClip.isRunning()) {
+                musicClip.stop();
+                musicClip.close();
+            }
+
             File musicFile = new File(musicPath);
             if (!musicFile.exists()) {
                 System.out.println("Music file not found at path: " + musicPath);
@@ -80,9 +85,9 @@ public class StartScreen extends JFrame {
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(musicFile);
             musicClip = AudioSystem.getClip();
             musicClip.open(audioStream);
-            musicClip.loop(Clip.LOOP_CONTINUOUSLY); // Play the music in a loop
+            musicClip.loop(Clip.LOOP_CONTINUOUSLY);
+            adjustVolume(volumeLevel);
             musicClip.start();
-            adjustVolume(volumeLevel); // Use the stored volume level
         } catch (Exception e) {
             System.out.println("Error playing background music.");
             e.printStackTrace();
@@ -142,10 +147,12 @@ public class StartScreen extends JFrame {
         soundToggleButton.addActionListener(e -> {
             isMuted = !isMuted;
             soundToggleButton.setIcon(isMuted ? volumeOffIcon : volumeOnIcon);
-            if (isMuted)
+
+            if (isMuted) {
                 stopMusic();
-            else
+            } else if (musicClip == null || !musicClip.isRunning()) {
                 playMusic("assets/start_screen_sound.wav");
+            }
         });
 
         panel.add(soundToggleButton);
