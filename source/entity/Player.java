@@ -55,6 +55,10 @@ public class Player extends Entity {
             right1 = ImageIO.read(new File("assets/entity/chefRight1.png"));
             down1 = ImageIO.read(new File("assets/entity/chefUp1.png"));
             left1 = ImageIO.read(new File("assets/entity/chefLeft1.png"));
+
+            right2 = ImageIO.read(new File("assets/entity/chefRightPlate.png"));
+            left2 = ImageIO.read(new File("assets/entity/chefLeftPlate.png"));
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -136,11 +140,14 @@ public class Player extends Entity {
         if (worldY > maxWorldY)
             worldY = maxWorldY;
 
-        //System.out.println("Moved: " + moved + ", Position: " + worldX + ", " + worldY);
+        // System.out.println("Moved: " + moved + ", Position: " + worldX + ", " +
+        // worldY);
     }
 
     public void draw(Graphics2D g2) {
         BufferedImage image = null;
+
+        boolean holdingItem = inventory.hasItem();
 
         switch (direction) {
             case "up":
@@ -150,14 +157,14 @@ public class Player extends Entity {
                 image = down1;
                 break;
             case "left":
-                image = left1;
+                image = holdingItem ? left2 : left1;
                 break;
             case "right":
-                image = right1;
+                image = holdingItem ? right2 : right1;
                 break;
         }
 
-        //System.out.println("Drawing player facing: " + direction);
+        // System.out.println("Drawing player facing: " + direction);
         g2.drawImage(image, worldX, worldY, gp.tileSize, gp.tileSize, null);
     }
 
