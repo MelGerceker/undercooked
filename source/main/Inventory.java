@@ -4,6 +4,10 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import object.SuperObject;
 
+/**
+ * Creates the inventory.
+ * Draws the inventory slot on screen, has methods such as addItem(), hasItem() etc.
+ */
 public class Inventory {
 
     public SuperObject slot; // Holds the current item in the inventory slot

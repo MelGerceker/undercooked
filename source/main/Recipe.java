@@ -12,6 +12,9 @@ import object.OBJ_donert;
 import object.OBJ_donerw;
 import object.SuperObject;
 
+/**
+ * Handles logic for cutting items and creating dishes with multiple items.
+ */
 public class Recipe {
 
     private GamePanel gp;

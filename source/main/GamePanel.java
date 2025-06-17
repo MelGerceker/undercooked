@@ -20,6 +20,14 @@ import entity.Player;
 import main.tile.TileManager;
 import object.SuperObject;
 
+/**
+ * GamePanel is the main game screen where all rendering, input handling,
+ * game loop, state management, and game mechanics (e.g., player movement,
+ * customer request handling, recipe logic) take place.
+ *
+ * It handles the core game update loop, drawing the player, tile map,
+ * objects, timer, UI text, and coordinating between game levels.
+ */
 public class GamePanel extends JPanel implements Runnable {
 
     final int originalTileSize = 16;
@@ -80,7 +88,6 @@ public class GamePanel extends JPanel implements Runnable {
 
     public Recipe recipe;
 
-
     public PickUp getPickUp() {
         return pickUp;
     }
@@ -101,6 +108,10 @@ public class GamePanel extends JPanel implements Runnable {
     private boolean displayCustomerLossMessage = false;
     private long lossMessageStartTime = 0;
 
+    /**
+     * * Constructs the main game panel, initializes game components like tile map,
+     * player, inventory, recipes, objects, and starts the countdown timer.
+     */
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.black);
@@ -167,6 +178,12 @@ public class GamePanel extends JPanel implements Runnable {
         gameState = playState;
     }
 
+    /**
+     * Configures player speed, request count, and timer based on the specified
+     * level.
+     * 
+     * @param level the game level to set up (1, 2, or 3)
+     */
     public void setupLevel(int level) {
         switch (level) {
             case 1:

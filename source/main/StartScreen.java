@@ -10,6 +10,10 @@ import javax.sound.sampled.*;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 
+/**
+ * Creates the start screen with start, rules, and exit button.
+ * Has volume on/off control.
+ */
 public class StartScreen extends JFrame {
 
     private Clip musicClip; // To store the background music for volume control
@@ -292,7 +296,7 @@ public class StartScreen extends JFrame {
 
     // Method to open the game screen in a new JFrame
     public void openGamePanel() {
-        JFrame gameFrame = new JFrame("Game Panel");
+        JFrame gameFrame = new JFrame("Undercooked");
         gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         gameFrame.setResizable(false);
 

@@ -11,6 +11,9 @@ import main.Inventory;
 import main.KeyHandler;
 import object.SuperObject;
 
+/**
+ * Subclass of Entity for the player character chef.
+ */
 public class Player extends Entity {
 
     private GamePanel gp;

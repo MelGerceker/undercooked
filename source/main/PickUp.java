@@ -8,6 +8,9 @@ import object.OBJ_Tomato;
 import object.OBJ_Wrap;
 import object.SuperObject;
 
+/**
+ * Handles logic for picking up and placing down items.
+ */
 public class PickUp {
 
     private GamePanel gp;
@@ -151,8 +154,9 @@ public class PickUp {
         }
     }
 
+    // Returns true for object found in station tile.
     public boolean isObjectOnTile8() {
-        int tileSize = gp.tileSize;
+        //int tileSize = gp.tileSize;
 
         // Loop through all objects in the game world
         for (SuperObject obj : gp.obj) {
