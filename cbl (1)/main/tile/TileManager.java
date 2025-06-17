@@ -57,78 +57,78 @@ public class TileManager {
     public void getTileImage() {
         try {
             tile[0] = new Tile();
-            tile[0].image = ImageIO.read(new File("assets/floor1.png"));
+            tile[0].image = ImageIO.read(new File("assets/tiles/floor1.png"));
 
             tile[1] = new Tile();
-            tile[1].image = ImageIO.read(new File("assets/table.png"));
+            tile[1].image = ImageIO.read(new File("assets/tiles/table.png"));
             tile[1].collision = true;
 
             tile[2] = new Tile();
-            tile[2].image = ImageIO.read(new File("assets/tomato.png"));
+            tile[2].image = ImageIO.read(new File("assets/tiles/tomato.png"));
             tile[2].collision = true;
 
             tile[3] = new Tile();
-            tile[3].image = ImageIO.read(new File("assets/lettuce.png"));
+            tile[3].image = ImageIO.read(new File("assets/tiles/lettuce.png"));
             tile[3].collision = true;
 
             tile[4] = new Tile();
-            tile[4].image = ImageIO.read(new File("assets/doner.png"));
+            tile[4].image = ImageIO.read(new File("assets/tiles/doner.png"));
             tile[4].collision = true;
 
             tile[5] = new Tile();
-            tile[5].image = ImageIO.read(new File("assets/wrap.png"));
+            tile[5].image = ImageIO.read(new File("assets/tiles/wrap.png"));
             tile[5].collision = true;
 
             tile[7] = new Tile();
-            tile[7].image = ImageIO.read(new File("assets/cola.png"));
+            tile[7].image = ImageIO.read(new File("assets/tiles/cola.png"));
             tile[7].collision = true;
 
             tile[6] = new Tile();
-            tile[6].image = ImageIO.read(new File("assets/delivery.png"));
+            tile[6].image = ImageIO.read(new File("assets/tiles/delivery.png"));
             tile[6].collision = true;
 
             tile[8] = new Tile();
-            tile[8].image = ImageIO.read(new File("assets/station.png"));
+            tile[8].image = ImageIO.read(new File("assets/tiles/station.png"));
             tile[8].collision = true;
 
             tile[9] = new Tile();
-            tile[9].image = ImageIO.read(new File("assets/cutting.png"));
+            tile[9].image = ImageIO.read(new File("assets/tiles/cutting.png"));
             tile[9].collision = true;
 
             tile[10] = new Tile();
-            tile[10].image = ImageIO.read(new File("assets/tile02.png"));
+            tile[10].image = ImageIO.read(new File("assets/tiles/tile02.png"));
             tile[10].collision = true;
 
             tile[11] = new Tile();
-            tile[11].image = ImageIO.read(new File("assets/table000.png"));
+            tile[11].image = ImageIO.read(new File("assets/tiles/table000.png"));
             tile[11].collision = true;
 
             tile[12] = new Tile();
-            tile[12].image = ImageIO.read(new File("assets/table001.png"));
+            tile[12].image = ImageIO.read(new File("assets/tiles/table001.png"));
             tile[12].collision = true;
 
             tile[13] = new Tile();
-            tile[13].image = ImageIO.read(new File("assets/table002.png"));
+            tile[13].image = ImageIO.read(new File("assets/tiles/table002.png"));
             tile[13].collision = true;
 
             tile[14] = new Tile();
-            tile[14].image = ImageIO.read(new File("assets/table003.png"));
+            tile[14].image = ImageIO.read(new File("assets/tiles/table003.png"));
             tile[14].collision = true;
 
             tile[15] = new Tile();
-            tile[15].image = ImageIO.read(new File("assets/table004.png"));
+            tile[15].image = ImageIO.read(new File("assets/tiles/table004.png"));
             tile[15].collision = true;
 
             tile[16] = new Tile();
-            tile[16].image = ImageIO.read(new File("assets/table005.png"));
+            tile[16].image = ImageIO.read(new File("assets/tiles/table005.png"));
             tile[16].collision = true;
 
             tile[17] = new Tile();
-            tile[17].image = ImageIO.read(new File("assets/table006.png"));
+            tile[17].image = ImageIO.read(new File("assets/tiles/table006.png"));
             tile[17].collision = true;
 
             tile[18] = new Tile();
-            tile[18].image = ImageIO.read(new File("assets/table007.png"));
+            tile[18].image = ImageIO.read(new File("assets/tiles/table007.png"));
             tile[18].collision = true;
 
         } catch (IOException e) {

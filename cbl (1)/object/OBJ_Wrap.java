@@ -11,7 +11,7 @@ public class OBJ_Wrap extends SuperObject {
 
         try {
             // image = ImageIO.read
-            image = ImageIO.read(new File("assets/wrap.png"));
+            image = ImageIO.read(new File("assets/tiles/wrap.png"));
 
         } catch (IOException e) {
             e.printStackTrace();

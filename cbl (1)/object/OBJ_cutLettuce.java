@@ -11,7 +11,7 @@ public class OBJ_cutLettuce extends SuperObject {
 
         try {
             // image = ImageIO.read
-            image = ImageIO.read(new File("assets/cutLettuce.png"));
+            image = ImageIO.read(new File("assets/objects/cutLettuce.png"));
 
         } catch (IOException e) {
             e.printStackTrace();

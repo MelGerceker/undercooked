@@ -11,7 +11,7 @@ public class OBJ_cutTomato extends SuperObject {
 
         try {
             // image = ImageIO.read
-            image = ImageIO.read(new File("assets/cutTomato.png"));
+            image = ImageIO.read(new File("assets/objects/cutTomato.png"));
 
         } catch (IOException e) {
             e.printStackTrace();

@@ -11,7 +11,7 @@ public class OBJ_donerlt extends SuperObject{
 
         try{
             //image = ImageIO.read
-            image = ImageIO.read(new File("assets/donerlt.png"));
+            image = ImageIO.read(new File("assets/objects/donerlt.png"));
 
         }catch(IOException e) {
             e.printStackTrace();
