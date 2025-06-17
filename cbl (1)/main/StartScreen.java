@@ -64,7 +64,7 @@ public class StartScreen extends JFrame {
 
         // Play background music if the flag is set to true
         if (playMusicFlag) {
-            playMusic("assets/start_screen_sound.wav");
+            playMusic("assets/sounds/start_screen_sound.wav");
         }
     }
 
@@ -134,8 +134,8 @@ public class StartScreen extends JFrame {
 
         // Create Mute Button
 
-        volumeOnIcon = new ImageIcon("assets/volume_up.png");
-        volumeOffIcon = new ImageIcon("assets/volume_off.png");
+        volumeOnIcon = new ImageIcon("assets/sounds/volume_up.png");
+        volumeOffIcon = new ImageIcon("assets/sounds/volume_off.png");
 
         soundToggleButton = new JButton(volumeOnIcon);
         soundToggleButton.setBounds(710, 10, 32, 32); // Top-right corner
@@ -151,7 +151,7 @@ public class StartScreen extends JFrame {
             if (isMuted) {
                 stopMusic();
             } else if (musicClip == null || !musicClip.isRunning()) {
-                playMusic("assets/start_screen_sound.wav");
+                playMusic("assets/sounds/start_screen_sound.wav");
             }
         });
         

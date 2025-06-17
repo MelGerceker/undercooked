@@ -273,7 +273,7 @@ public class GamePanel extends JPanel implements Runnable {
             } else {
                 gameState = gameOverState;
                 gameOverDisplayStartTime = System.currentTimeMillis();
-                playWinSound("assets/win_sound.wav");
+                playWinSound("assets/sounds/win_sound.wav");
             }
         }
 
@@ -295,7 +295,7 @@ public class GamePanel extends JPanel implements Runnable {
             levelComplete = true;
             gameState = levelCompleteState;
             levelCompleteTime = System.currentTimeMillis();
-            playSoundEffect( "assets/level_passed.wav\\", false);
+            playSoundEffect( "assets/sounds/level_passed.wav\\", false);
         }
     }
 
