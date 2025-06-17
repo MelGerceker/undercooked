@@ -1,5 +1,14 @@
 package main;
 
+/**
+ * Responsible for placing objects into the game world, such as setting delivery
+ * tile coordinates.
+ * 
+ * Although initially designed for placing interactive objects, this class
+ * currently
+ * focuses on identifying special tile types (like delivery zones) and updating
+ * relevant coordinates.
+ */
 public class AssetSetter {
     GamePanel gp;
 
@@ -7,17 +16,14 @@ public class AssetSetter {
         this.gp = gp;
     }
 
+    /**
+     * Identifies and sets the world coordinates of special objects in the game map.
+     * 
+     * Currently, this method searches the map for the delivery tile (tile ID 6) and
+     * updates {@code gp.deliveryX} and {@code gp.deliveryY} accordingly.
+     * 
+     */
     public void setObject() {
-
-        // Creates new object
-        // gp.obj[0] = new OBJ_Key();
-
-        // Sets the coordinates of the object created
-        // gp.obj[0].worldX = 0;
-        // gp.obj[0].worldY = 2*gp.tileSize;
-
-        // This class would be used for displaying objects in the map but currently all
-        // stations and parts of the kitchen map are tiles.
 
         // Find delivery tile and set coords
         for (int row = 0; row < gp.maxWorldRow; row++) {
@@ -30,7 +36,8 @@ public class AssetSetter {
             }
         }
 
-        //System.out.println("Delivery tile set at: " + gp.deliveryX + ", " + gp.deliveryY);
+        // System.out.println("Delivery tile set at: " + gp.deliveryX + ", " +
+        // gp.deliveryY);
 
     }
 }
