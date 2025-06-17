@@ -78,6 +78,9 @@ public class GamePanel extends JPanel implements Runnable {
     private Inventory inventory;
     private PickUp pickUp;
 
+    public Recipe recipe;
+
+
     public PickUp getPickUp() {
         return pickUp;
     }
@@ -110,6 +113,8 @@ public class GamePanel extends JPanel implements Runnable {
         this.setLayout(null);
 
         pickUp = new PickUp(this);
+        recipe = new Recipe(this);
+
         player = new Player(this, keyH);
         setupGame();
 
@@ -232,10 +237,10 @@ public class GamePanel extends JPanel implements Runnable {
 
             final int DEFLECTION = 40;
 
-            pickUp.replaceItemsWithDonerWOnTile8();
-            pickUp.cuttingTomato();
-            pickUp.cuttinglettuce();
-            pickUp.replaceItemsWithDonerLT();
+            recipe.replaceItemsWithDonerWOnTile8();
+            recipe.cuttingTomato();
+            recipe.cuttinglettuce();
+            recipe.replaceItemsWithDonerLT();
 
             for (int i = 0; i < obj.length; i++) {
                 SuperObject currentObject = obj[i];
@@ -246,8 +251,7 @@ public class GamePanel extends JPanel implements Runnable {
                     boolean isCloseX = objectX >= deliveryX - DEFLECTION && objectX <= deliveryX + DEFLECTION;
                     boolean isCloseY = objectY >= deliveryY - DEFLECTION && objectY <= deliveryY + DEFLECTION;
 
-                    //System.out.println("Object dropped at: " + objectX + ", " + objectY);
-
+                    // System.out.println("Object dropped at: " + objectX + ", " + objectY);
 
                     if (isCloseX && isCloseY && customerRequest.checkRequest(currentObject)) {
                         obj[i] = null;
@@ -295,7 +299,7 @@ public class GamePanel extends JPanel implements Runnable {
             levelComplete = true;
             gameState = levelCompleteState;
             levelCompleteTime = System.currentTimeMillis();
-            playSoundEffect( "assets/sounds/level_passed.wav\\", false);
+            playSoundEffect("assets/sounds/level_passed.wav\\", false);
         }
     }
 
