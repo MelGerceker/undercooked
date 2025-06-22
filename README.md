@@ -34,9 +34,9 @@ undercooked/
 - Cuttable ingredients: Tomato and lettuce must be cut before being used  
 - Station interaction system: Use combination stations (marked with a square) to assemble doner wraps from ingredients  
 - 3 levels:  
-  - **Level 1**: Introductory level
-  - **Level 2**: Faster player movement
-  - **Level 3**: Shorter timer 
+  - **Level 1**: Introductory level - serve 2 customers, 1 minute per customer.
+  - **Level 2**: Faster player speed - serve 3 costumers.
+  - **Level 3**: Shorter timer - serve 5 customers, 30 seconds per customer.
 
 ## How to Play
 
