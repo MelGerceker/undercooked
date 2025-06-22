@@ -61,9 +61,9 @@ public class GamePanel extends JPanel implements Runnable {
     // The delays also help the game play to match with the sound effects.
 
     // Number of customers to serve for each level
-    final int LEVEL_1_CUSTOMERS = 1;
-    final int LEVEL_2_CUSTOMERS = 1;
-    final int LEVEL_3_CUSTOMERS = 1;
+    final int LEVEL_1_CUSTOMERS = 2;
+    final int LEVEL_2_CUSTOMERS = 3;
+    final int LEVEL_3_CUSTOMERS = 5;
 
     TileManager tileM = new TileManager(this);
     KeyHandler keyH = new KeyHandler();
@@ -120,7 +120,8 @@ public class GamePanel extends JPanel implements Runnable {
         this.setFocusable(true);
 
         customerRequest = new CustomerRequest();
-        inventory = new Inventory(tileSize, screenWidth - tileSize - 20, screenHeight - tileSize - 20);
+        inventory = new Inventory(tileSize, screenWidth - tileSize - 20,
+                screenHeight - tileSize - 20);
         this.setLayout(null);
 
         pickUp = new PickUp(this);
