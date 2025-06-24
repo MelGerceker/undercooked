@@ -40,6 +40,9 @@ public class StartScreen extends JFrame {
         }
 
         // Set the window title, size, and non-resizable property
+
+        setIconImage(new ImageIcon("assets/objects/donerlt.png").getImage());
+
         setTitle("Undercooked");
         setSize(768, 576);
         setResizable(false); // Make the window non-resizable
@@ -158,7 +161,7 @@ public class StartScreen extends JFrame {
                 playMusic("assets/sounds/start_screen_sound.wav");
             }
         });
-        
+
         panel.add(soundToggleButton);
 
         panel.add(startButton);
@@ -297,6 +300,8 @@ public class StartScreen extends JFrame {
     // Method to open the game screen in a new JFrame
     public void openGamePanel() {
         JFrame gameFrame = new JFrame("Undercooked");
+        gameFrame.setIconImage(new ImageIcon("assets/objects/donerlt.png").getImage());
+
         gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         gameFrame.setResizable(false);
 
