@@ -1,24 +1,18 @@
 # Undercooked
 *Overcooked but Underdeveloped*
 
+<img src="https://github.com/user-attachments/assets/37073690-0e74-454f-ac2c-99d17930c56d" align="right" width="380" style="margin-left: 20px; margin-bottom: 0;"/>
 
-<table>
-<tr>
-<td>
+Undercooked is a Java Swing single-player restaurant simulation game. You play as a doner chef fulfilling customer orders by picking up, preparing, and delivering the right orders before time runs out.
+<br />
+<br />
 
-Undercooked is a Java Swing single-player restaurant simulation game. You play as a doner chef fulfilling customer orders by picking up, preparing, and delivering the right items before time runs out.
+> How to Run
+>
+Run the game via `Launcher.java` which is located at: `source/main/Launcher.java`
 
-</td>
-<td>
-<img src="https://github.com/user-attachments/assets/37073690-0e74-454f-ac2c-99d17930c56d" width="800"/>
-</td>
-</tr>
-</table>
+<br clear="all"/>
 
-
-##  How to Run
-
-Run the game via `Launcher.java` which is located at: 'source/main/Launcher.java
 
 
 ## Structure
@@ -59,9 +53,13 @@ undercooked/
 - Use **combination stations** (marked with a square center) to assemble doner wraps  
 - Deliver the completed order by placing it near the **delivery tile**
 
+<br />
 A mid-game screenshot:  
-<img src="https://github.com/user-attachments/assets/788a83d2-a5a2-477d-9417-fce115bd13c6" width="500"/>
+<br />
 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/0269a828-9dcb-47a8-b6b1-e9e7f839f2b5" width="500" />
+</p>
 
 ### Order Abbreviations
 
